@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>gestion des matieres</title>
+
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular-multi-select/4.0.0/isteven-multi-select.js"></script>
+<script src="js/moduls/app.js"></script>
+<script src="js/services/formation/SemestreService.js"></script>
+<script src="js/services/formation/MatiereService.js"></script>
+
+<script src="js/controllers/formation/MatiereController.js"></script>
+</head>
+<body ng-app="app" class="ng-cloak"
+	ng-controller="MatiereController as ctrl">
+	<nav class="w3-sidenav w3-white w3-card-8" style="width: 25%">
+		<a href="http://localhost:8080/gestionetudiant.html">gestion des
+			etudiants</a> <a href="http://localhost:8080/gestionEnsP.html">gestion
+			enseignant permanent</a> <a href="http://localhost:8080/gestionEnsV.html">gestion
+			enseignant vacataire</a> <a
+			href="http://localhost:8080/gestionFormationC.html">gestion
+			formation Continue</a> <a
+			href="http://localhost:8080/gestionFormationD.html">gestion
+			formation Diplomante</a> <a
+			href="http://localhost:8080/gestionNiveau.html">gestion des
+			niveaux</a> <a href="http://localhost:8080/gestionSemestre.html">gestion
+			des semestres</a> <a href="http://localhost:8080/gestionMatiere.html">gestion
+			des matiere</a>
+	</nav>
+	<div class="w3-container" style="margin-left: 25%">
+		<div class="generic-container">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<span class="lead">ajouter une matiere </span>
+				</div>
+				<br>
+				<div class="formcontainer">
+					<form name="myForm" class="form-horizontal">
+						<input type="hidden" ng-model="ctrl.matiere.idMatiere" />
+
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-2 control-lable" for=""></label>
+								<div class="col-md-7">
+									<input type="text" ng-model="ctrl.matiere.nomMatiere" id="nom"
+										class="form-control input-sm" placeholder="nom du matiere" />
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-2 control-lable" for=""></label>
+								<div class="col-md-7">
+									<input type="text" ng-model="ctrl.matiere.description"
+										id="description" class="form-control input-sm"
+										placeholder="ajouter une decription" />
+								</div>
+							</div>
+						</div>
+
+						<!-- <div class="form-group col-md-12">
+							<label class="col-md-2 control-lable" for=""></label>
+							
+							<label ng-repeat="s in ctrl.semestres"> <input
+								type="checkbox" ng-checked="ctrl.isChecked(s.idSemestre)"
+								ng-model="bool" checked="" value="{{s.idSemestre}}">
+								{{s.nomSemestre}}
+							</label>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-2 control-lable" for=""></label>
+							</div>
+							<div ng-dropdown-multiselect="" options="ctrl.semestres"
+								selected-model="ctrl.semestres" checkboxes="true"></div>
+
+						</div> 
+
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-2 control-lable" for=""></label>
+								<div class="col-md-7">
+									<select class="form-control input-sm"
+										ng-model="ctrl.idSelectedSemestre">
+										<option value="">-- semestres --</option>
+										<option ng-repeat="s in ctrl.semestres"
+											value="{{s.idSemestre}}">{{s.nomSemestre}}</option>
+									</select>
+
+								</div>
+							</div>
+						</div>
+                             -->
+						<div class="row">
+							<div class="form-group col-md-12">
+								<div class="col-md-2 control-lable"></div>
+								<div class="col-md-7">
+									<input type="button" ng-click="ctrl.update()" value="update"
+										class="btn btn-primary btn-sm"> <input type="button"
+										ng-click="ctrl.add()" value="add"
+										class="btn btn-primary btn-sm">
+									<button type="button" ng-click="ctrl.reset()"
+										class="btn btn-warning btn-sm">Annuler</button>
+								</div>
+							</div>
+						</div>
+
+					</form>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<!-- Default panel contents -->
+				<div class="panel-heading">
+					<span class="lead">List des matieres </span>
+				</div>
+				<div class="tablecontainer">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+
+								<th>matiere</th>
+								<th>description</th>
+								<th>Semestre</th>
+
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="e in ctrl.matieres">
+								<td>{{e.nomMatiere}}</td>
+								<td>{{e.description}}</td>
+								<td>
+									<ul>
+										<li ng-repeat="s in e.modules">{{s.nomSemestre}}</li>
+									</ul>
+								</td>
+								<td>
+									<button type="button" ng-click="ctrl.edit(e.idMatiere)"
+										class="btn btn-success custom-width">Edit</button>
+									<button type="button" ng-click="ctrl.remove(e.idMatiere)"
+										class="btn btn-danger custom-width">Remove</button>
+									<button type="button" ng-click="ctrl.show(e.idMatiere)"
+										class="btn btn-primary custom-width">consulter infos</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-default" ng-show="showMe">
+			<div class="panel-heading">
+				<span class="lead">details matiere </span>
+			</div>
+
+			<form class="form-horizontal">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">nom du matiere</label>
+					<div class="col-sm-10">
+						<p class="form-control-static">
+							<span ng-bind="ctrl.matiereshow.nomMatiere"></span>
+						</p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">description</label>
+					<div class="col-sm-10">
+						<p class="form-control-static">
+							<span ng-bind="ctrl.matiereshow.description"></span>
+						</p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">semestre</label>
+					<div class="col-sm-10 form-control-static">
+						<ul>
+							<li ng-repeat="f in ctrl.matiereshow.semesters">
+								{{f.nomSemester}}</li>
+						</ul>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

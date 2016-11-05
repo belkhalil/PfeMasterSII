@@ -1,0 +1,142 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<div class="generic-container" ng-controller="SalleController as ctrl">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<span class="lead">ajouter une Salle </span>
+		</div>
+		<br>
+		<div class="formcontainer">
+			<form name="myForm" class="form-horizontal">
+				<input type="hidden" ng-model="ctrl.salle.idSalle" />
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for=""></label>
+						<div class="col-md-7">
+							<input type="number" ng-model="ctrl.salle.numSalle" id="num"
+								class="form-control input-sm" placeholder="num du Salle" />
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for=""></label>
+						<div class="col-md-7">
+							<select class="form-control input-lg"
+								ng-model="ctrl.salle.typeSalle">
+								<option value="">-- Type de salle --</option>
+								<option value="salle normale">salle normale</option>
+								<option value="salle de reunion">salle de reunion</option>
+								<option value="emphie">emphie</option>
+								<option value="salle informatique">salle informatique</option>
+								<option value="salle electroniaque">salle electronique</option>
+								<option value="salle de conference">salle de conference</option>
+							</select> 
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for=""></label>
+						<div class="col-md-7">
+						<textarea ng-model="ctrl.salle.descSalle"
+								id="description" class="form-control input-sm"
+								placeholder="ajouter une decription" rows="" cols=""></textarea>
+							
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<div class="col-md-2 control-lable"></div>
+						<div class="col-md-7">
+							<input type="button" ng-click="ctrl.update()" value="update"
+								class="btn btn-primary btn-sm"> <input type="button"
+								ng-click="ctrl.add()" value="add" class="btn btn-primary btn-sm">
+							<button type="button" ng-click="ctrl.reset()"
+								class="btn btn-warning btn-sm">Annuler</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<!-- Default panel contents -->
+		<div class="panel-heading">
+			<span class="lead">List des salles </span>
+		</div>
+		<div class="tablecontainer">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>numero de la salle</th>
+						<th>etat de la salle</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr ng-repeat="m in ctrl.salles" >
+
+
+						<td>{{m.numSalle}}</td>
+						<td  >{{m.labelEtat}}</td>
+						<td>
+							<button type="button" ng-click="ctrl.edit(m.idSalle)"
+								class="btn btn-success custom-width">Edit</button>
+							<button type="button" ng-click="ctrl.remove(m.idSalle)"
+								class="btn btn-danger custom-width">Remove</button>
+							<button type="button" ng-click="ctrl.show(m.idSalle)"
+								class="btn btn-primary custom-width" data-toggle="modal"
+								data-target=".bd-example-modal-lg">Details</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+		aria-labelledby="myLargeModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div ng-show="showMe">
+					<div class="panel-heading">
+						<span class="lead">details salle </span>
+					</div>
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">numero de salle</label>
+							<div class="col-sm-10">
+								<p class="form-control-static">
+									<span ng-bind="ctrl.salleshow.numSalle"></span>
+								</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">type de salle</label>
+							<div class="col-sm-10">
+								<p class="form-control-static">
+									<span ng-bind="ctrl.salleshow.typeSalle"></span>
+								</p>
+							</div>
+						</div>
+
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">description</label>
+							<div class="col-sm-10">
+								<p class="form-control-static">
+									<span ng-bind="ctrl.salleshow.descSalle"></span>
+								</p>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

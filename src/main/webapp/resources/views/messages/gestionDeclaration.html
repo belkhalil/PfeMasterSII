@@ -1,0 +1,43 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+	.my-group .form-control{
+	    width:50%;
+	}
+</style>
+	<div ng-controller="DeclarationDetailCtrl as ctrl" >
+			<!-- begin of the panel-->
+			
+			<div class="col-md-12 " ng-if="ctrl.declarationsrecus">
+			
+		<div class="panel panel-default">
+		<div class="panel-heading">
+			<span class="lead">Declarations </span>
+		</div>
+		
+				      	<table class="table"><!-- the table of users  -->
+						<thead>
+							<tr>
+								<th>id</th>
+								<th>objet</th>
+								<th>Envoyee par</th>
+								<th>Date d'envoie </th>
+							</tr>
+						</thead>	
+						<tbody>
+							<tr ng-repeat="u in ctrl.declarationsrecus">
+								<td>{{u.idDeclaration}}</td>
+								<td><a href="#/detailDec/{{u.idDeclaration}}">{{u.objet}}</a></td>
+								<td>{{u.user.firstName}} {{u.user.lastName}} </td>
+								<td>{{u.datedeclaration  | date:'MM/dd/yyyy'}}</td>								
+								
+							</tr>
+						</tbody>
+					</table><!-- end of the table of users  -->
+					
+			      </div>
+			    
+			
+			</div>  <!-- end of the panel-->
+			
+		<!-- the end of the controller div  -->
+	</div>

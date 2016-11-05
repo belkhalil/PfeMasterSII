@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="bootstrap-3.3.6-dist/css/bootstrap.min.css">
+
+</head>
+ <style>
+            @media only screen and (max-width : 540px)
+            {
+                .chat-sidebar
+                {
+                    display: none !important;
+                }
+               
+                .chat-popup
+                {
+                    display: none !important;
+                }
+            }
+           
+            body
+            {
+                background-color: #e9eaed;
+                padding-top: 70px;//for nav bar 
+            }
+           
+            .chat-sidebar
+            {
+                width: 200px;
+                position: fixed;
+                height: 100%;
+                right: 0px;
+                top: 50px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                border: 1px solid rgba(29, 49, 91, .3);
+            }
+           
+            .sidebar-name
+            {
+                padding-left: 10px;
+                padding-right: 10px;
+                margin-bottom: 4px;
+                font-size: 12px;
+            }
+           
+            .sidebar-name span
+            {
+                padding-left: 5px;
+            }
+           
+            .sidebar-name a
+            {
+                display: block;
+                height: 100%;
+                text-decoration: none;
+                color: inherit;
+            }
+           
+            .sidebar-name:hover
+            {
+                background-color:#e1e2e5;
+            }
+           
+            .sidebar-name img
+            {
+                width: 32px;
+                height: 32px;
+                vertical-align:middle;
+            }
+           
+            .popup-box
+            {
+                display: none;
+                position: fixed;
+                bottom: 0px;
+                right: 220px;
+                height: 285px;
+                background-color: rgb(237, 239, 244);
+                width: 250px;
+                border: 1px solid rgba(29, 49, 91, .3);
+            }
+           
+            .popup-box .popup-head
+            {
+                background-color: #6d84b4;
+                padding: 5px;
+                color: white;
+                font-weight: bold;
+                font-size: 14px;
+                clear: both;
+            }
+           
+            .popup-box .popup-head .popup-head-left
+            {
+                float: left;
+            }
+           
+            .popup-box .popup-head .popup-head-right
+            {
+                float: right;
+                opacity: 0.5;
+            }
+           
+            .popup-box .popup-head .popup-head-right a
+            {
+                text-decoration: none;
+                color: inherit;
+            }
+           
+            .popup-box .popup-messages
+            {
+                height: 80%;
+                width:100%;
+                overflow-y: scroll;
+            }
+            .popup-box .popup-controller{
+             height: 50%;
+            }
+            .popup-box .popup-controller .textToSend{
+              width:100%;
+            }
+</style>
+<body  ng-app="myApp" ng-controller="MainController as MainCtrl">
+	<nav class="navbar navbar-default navbar-fixed-top">
+	  <div class="container">
+	      <ul class="nav navbar-nav">
+            <li class="active"><a href="#/" >Empsi consulting</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li ng-show="!MainCtrl.logedUser"><a href="#login">Login</a></li>
+            <li ng-show="MainCtrl.logedUser"><a href="#" ng-click="MainCtrl.logout()">logout</a></li>
+          </ul>
+	  </div>
+	</nav>
+	<div class="row">
+		<div class="col-sm-3">
+			<ul class="nav nav-pills nav-stacked">
+				<li> <a  href="#inscription">nouveau compte</a></li>
+				<li ng-repeat="(key, data) in MainCtrl.logedUser.userMenu">
+					{{key}}  
+					<ul class="nav nav-pills nav-stacked">
+						<li ng-repeat="(keyKey, dataData) in data"> 
+							<a href="{{dataData}}">{{keyKey}}</a>
+						</li>
+					</ul>
+						
+				</li>
+				<li> <a  href="#EnsP">Ens P</a></li>
+				<li> <a  href="#ensV">Ens V</a></li>
+				<li> <a  href="#Etudiant">Etudiant</a></li>
+				<li> <a  href="#formationContinue">formation Continue</a></li>
+				<li> <a  href="#formationDiplomante">formation Diplomante</a></li>
+				<li> <a  href="#matiere">matiere</a></li>
+				<li> <a  href="#module">module</a></li>
+				<li> <a  href="#niveau">niveau</a></li>
+				<li> <a  href="#semestere">semestere</a></li>
+				<li> <a  href="#typeFormation">typeFormation</a></li>
+				<li> <a  href="#"></a></li>
+				
+			</ul>
+		</div>
+		<div class="col-sm-6" ng-view>
+	
+		</div>
+		<div class="col-sm-3" >
+			<div class="chat-sidebar" > <!-- -->
+            	<div class="sidebar-name" ng-repeat="(keyKey, dataData) in MainCtrl.users">
+                <div  ng-click="MainCtrl.chatBox_popup(keyKey)" style="cursor: pointer;">
+                    <img width="30" height="30" src="img/icon.jpg" />
+                    <span>{{dataData}}</span>
+                </div>
+           		</div>
+        	</div>
+		</div>
+	</div>
+	<div ng-controller="ChatController" ng-show="MainCtrl.chat_box_show">
+	
+		  <div class="popup-box chat-popup" id="+ id +" style="display: block;"> 
+                <div class="popup-head">
+                <div class="popup-head-left">{{MainCtrl.userToChatWith.name}}</div>
+                <div class="popup-head-right"><a ng-click="MainCtrl.chatBox_hide()">&#10005;</a></div>
+                <div style="clear: both">
+                </div>
+                </div>
+                <div class="popup-messages">
+                
+                <div ng-repeat="message in messages | orderBy:'time':true" class="message"  >
+			       <div style="background-color: white;">
+			       <time>{{message.time | date:'HH:mm'}}</time>
+			        from {{message.idSender}}  to {{message.idReceiver}}
+			       <br>
+			       <span ng-class="{self: message.self}">{{message.message}}</span>
+			       	
+			       </div>
+			       <br>
+			    </div>
+			    
+                </div>
+               	<div class="popup-controller" >
+               		
+               		<form ng-submit="addMessage()" >
+               		<input type="text" class="textToSend" ng-model="messageToSend.message">			
+               		</form>
+               	</div>
+            </div>    
+	</div>
+
+	
+	<!-- libs -->
+	<script src="js/libs/angular.min.js"></script>
+	<script src="js/libs/angular-route.js"></script>
+	<script src="js/libs/jquery-2.2.1.js"></script>
+	<!-- For socket -->
+	<script src="js/libs/sockjs/sockjs-0.3.4.js" type="text/javascript"></script>
+    <script src="js/libs/stomp-websocket/lib/stomp.js" type="text/javascript"></script>
+    <script src="js/libs/lodash/dist/lodash.js"></script>
+	<!-- end of libs   -->
+	
+	
+	<script src="app.js"></script>
+	<script src="js/services/main_model_service.js" ></script>
+	<script src="js/controllers/main_controller.js"></script>
+	
+	<!-- Socket -->
+	<script src="js/controllers/socket/chat_service.js" type="text/javascript"></script>
+    <script src="js/controllers/socket/chat_controller.js" type="text/javascript"></script>
+	
+	<!--Group and rights  -->
+	<script src="js/controllers/rights/groups_controller.js"></script>
+	<script src="js/controllers/rights/login_controller.js"></script>
+	<script src="js/controllers/rights/rights_controller.js"></script>
+	<script src="js/controllers/rights/users_controller.js"></script>
+	<script src="js/controllers/rights/login_controller.js"></script>
+	<script src="js/controllers/rights/landing_controller.js"></script>
+	<script src="js/controllers/rights/user_detail_controller.js"></script>
+	
+	<!-- Login -->
+	<script src="js/controllers/rights/login_controller.js"></script>
+
+	<!-- Messages -->
+	<script src="js/controllers/messages/message_envoyes.js"></script>	
+	<script src="js/controllers/messages/message_controller.js"></script>
+	<script src="js/controllers/messages/declaration_controller.js"></script>
+	<script src="js/controllers/messages/declaration_detail_controller.js"></script>
+	<script src="js/controllers/messages/message_detail_controller.js"></script>
+	
+	<!-- Formation -->
+
+	<script src="js/services/formation/EnsPService.js"></script>
+	<script src="js/services/formation/EnsVService.js"></script>
+	<script src="js/services/formation/EtudiantService.js"></script>
+	<script src="js/services/formation/FormationContinueService.js"></script>
+	<script src="js/services/formation/FormationDServices.js"></script>
+	<script src="js/services/formation/MatiereService.js"></script>
+	<script src="js/services/formation/ModuleService.js"></script>
+	<script src="js/services/formation/NiveauService.js"></script>
+	<script src="js/services/formation/SemestreService.js"></script>
+	<script src="js/services/formation/TypeFormationService.js"></script>
+	<script src="js/controllers/formation/EnsPController.js"></script>
+	<script src="js/controllers/formation/EnsVController.js"></script>
+	<script src="js/controllers/formation/EtudiantController.js"></script>
+	<script src="js/controllers/formation/FormationContinueController.js"></script>
+	<script src="js/controllers/formation/FormationDiplomanteController.js"></script>
+	<script src="js/controllers/formation/MatiereController.js"></script>
+	<script src="js/controllers/formation/ModuleController.js"></script>
+	<script src="js/controllers/formation/NiveauController.js"></script>
+	<script src="js/controllers/formation/SemestreController.js"></script>
+	<script src="js/controllers/formation/TypeFormationController.js"></script>
+	
+	<!-- inscription -->
+	<script src="js/controllers/inscription/inscription_controller.js"></script>
+	<script src="js/controllers/inscription/gestion_inscription.js"></script>
+	
+	<!-- chat -->
+	<script src="js/controllers/messages/email_suggestion_controlller.js"></script>
+	
+	<!--  -->
+	<script src="js/controllers/classe/classe_controller.js"></script>
+	<script src="js/controllers/classe/maClasseController.js"></script>
+	<script src="js/controllers/classe/messageClasseController.js"></script>
+	
+</body>
+</html>

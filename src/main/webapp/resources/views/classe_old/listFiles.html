@@ -1,0 +1,50 @@
+<style type="text/css">
+	.my-group .form-control{
+	    width:50%;
+	}
+</style>
+	<div ng-controller="FichierClasseController as ctrl" >
+	<div ng-if="ctrl.classe">
+		<div class="col-md-12 ">
+		<div class="panel panel-info spacer">
+		<div class="panel-heading"> Ma classe </div>
+			<table>
+				<tr>
+								<td><button class="btn btn-success" ng-click="ctrl.listerFichiers(ctrl.classe.idClasse)" ng-model="ctrl.classe.idClasse" >{{ctrl.classe.nomClasse}}</button>
+								
+				</tr>
+			</table>				
+		</div>
+		</div>
+		
+		<div ng-if="ctrl.files"> <!-- begin of the panel-->
+		<div class="col-md-12 ">
+		<div class="panel panel-info spacer">
+		<div class="panel-heading">	<h3>Documents de classe</h3></div>
+				      	<table class="table"><!-- the table of users  -->
+						<thead>
+							<tr>
+								<th>id</th>
+								<th>Publier le </th>
+								<th>Publié par</th>
+								<th>nom </th>
+							</tr>
+						</thead>	
+						<tbody>
+							<tr ng-repeat="u in ctrl.files">
+								<td>{{u.idFichier}}</td>
+								<td>{{u.datePartage | date:'MM/dd/yyyy'}}</a></td>
+								<td>{{u.enseignant.nomUtilisateur}} {{u.enseignant.nomUtilisateur}}</td>
+								<td><a ng-href="/empsi/images/{{u.nomFichier}}.{{u.extension}}">{{u.nomFichier}}</td>
+							</tr>
+						</tbody>
+					</table><!-- end of the table of users  -->
+					</div></div>		
+			      </div>
+			
+		</div>
+			      	
+	  </div>
+ <!-- end of the panel-->
+			
+<!-- the end of the controller div  -->

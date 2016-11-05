@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>home</title>
+
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="css/thumbnail-gallery.css" rel="stylesheet">
+
+</head>
+
+<body   ng-app="app">
+
+	<!-- Navigation -->
+	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a target="_blank" href="#" class="navbar-brand">My sApp.</a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="#">Inicio</a></li>
+					<li class="active"><a
+						href="http://bootsnipp.com/snippets/featured/nav-account-manager"
+						target="_blank">Inspirado en este ejemplo</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown">DropDown <span class="caret"></span>
+					</a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Link 2</a></li>
+						</ul></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span>
+							<strong>Nombre</strong> <span
+							class="glyphicon glyphicon-chevron-down"></span>
+					</a>
+						<ul class="dropdown-menu">
+							<li>
+								<div class="navbar-login">
+									<div class="row">
+										<div class="col-lg-4">
+											<p class="text-center">
+												<span class="glyphicon glyphicon-user icon-size"></span>
+											</p>
+										</div>
+										<div class="col-lg-8">
+											<p class="text-left">
+												<strong>Nombre Apellido</strong>
+											</p>
+											<p class="text-left small">correoElectronico@email.com</p>
+											<p class="text-left">
+												<a href="#" class="btn btn-primary btn-block btn-sm">Actualizar
+													Datos</a>
+											</p>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<div class="navbar-login navbar-login-session">
+									<div class="row">
+										<div class="col-lg-12">
+											<p>
+												<a href="#" class="btn btn-danger btn-block">Cerrar
+													Sesion</a>
+											</p>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!--/ Navigation -->
+
+	<!-- Page Content -->
+	<div class="container" >
+
+		<div class="col-lg-12 ">
+			<h1 class="page-header">Bienvenue Sur L'espace Admin</h1>
+		</div>
+
+		<div class="row col-lg-12">
+			<div class="col-sm-3 col-md-3">
+				<div class="panel-group" id="accordion">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion"
+									href="#collapseOne"><span
+									class="glyphicon glyphicon-folder-close"> </span>Formation</a>
+							</h4>
+						</div>
+						<div id="collapseOne" class="panel-collapse collapse in">
+							<div class="panel-body">
+								<table class="table">
+									<tr>
+										<td><span class="glyphicon glyphicon-pencil text-primary"></span><a
+											href="#Etudiant">Etudiants</a></td>
+									</tr>
+									<tr>
+										<td><span class="glyphicon glyphicon-flash text-success"></span><a
+											href="#EnsP">Enseignant Permanant</a></td>
+									</tr>
+									<tr>
+										<td><span class="glyphicon glyphicon-flash text-success"></span><a
+											href="#ensV">Enseignant Vacataire</a></td>
+									</tr>
+									<tr>
+										<td><span class="glyphicon glyphicon-flash text-success"></span><a
+											href="#formationContinue">formation Continie</a></td>
+									</tr>
+									<tr>
+										<td><span class="glyphicon glyphicon-flash text-success"></span><a
+											href="#formationDiplomante">Formation Diplomamnte</a></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion"
+									href="#collapseTwo"><span class="glyphicon glyphicon-th">
+								</span>Modules</a>
+							</h4>
+						</div>
+						<div id="collapseTwo" class="panel-collapse collapse">
+							<div class="panel-body">
+								<table class="table">
+									<tr>
+										<td><a href="http://www.jquery2dotnet.com">Orders</a> <span
+											class="label label-success">$ 320</span></td>
+									</tr>
+									<tr>
+										<td><a href="http://www.jquery2dotnet.com">Invoices</a></td>
+									</tr>
+
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion"
+									href="#collapseThree"><span
+									class="glyphicon glyphicon-user"> </span>Account</a>
+							</h4>
+						</div>
+						<div id="collapseThree" class="panel-collapse collapse">
+							<div class="panel-body">
+								<table class="table">
+									<tr>
+										<td><a href="http://www.jquery2dotnet.com">Change
+												Password</a></td>
+									</tr>
+									<tr>
+										<td><a href="http://www.jquery2dotnet.com">Notifications</a>
+											<span class="label label-info">5</span></td>
+									</tr>
+
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion"
+									href="#collapseFour"><span class="glyphicon glyphicon-file">
+								</span>Reports</a>
+							</h4>
+						</div>
+						<div id="collapseFour" class="panel-collapse collapse">
+							<div class="panel-body">
+								<table class="table">
+									<tr>
+										<td><span class="glyphicon glyphicon-usd"></span><a
+											href="http://www.jquery2dotnet.com">Sales</a></td>
+									</tr>
+									<tr>
+										<td><span class="glyphicon glyphicon-user"></span><a
+											href="http://www.jquery2dotnet.com">Customers</a></td>
+									</tr>
+
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-9 well" ng-view>
+			
+			
+			</div>
+		</div>
+
+		<!-- Footer -->
+		<footer>
+			<div class="row">
+				<div class="col-lg-12">
+					<p>Copyright &copy; Your Website 2014</p>
+				</div>
+			</div>
+		</footer>
+
+	</div>
+	<!-- /.container -->
+	<!-- libs -->
+	<script src="js/libs/angular.min.js"></script>
+	<script src="js/libs/angular-route.js"></script>
+	
+
+	<!-- Formation -->
+	
+	<script src="app.js"></script>
+	
+	<script src="js/services/formation/EtudiantService.js"></script>
+	<script src="js/services/formation/EnsPService.js"></script>
+	<script src="js/services/formation/EnsVService.js"></script>
+	<script src="js/services/formation/FormationContinueService.js"></script>
+	<script src="js/services/formation/TypeFormationService.js"></script>
+	<script src="js/services/formation/FormationDServices.js"></script>
+	<script src="js/controllers/formation/FormationContinueController.js"></script>
+	<script src="js/controllers/formation/EnsVController.js"></script>
+	<script src="js/controllers/formation/EnsPController.js"></script>
+	<script src="js/controllers/formation/EtudiantController.js"></script>
+	<script src="js/controllers/formation/FormationDiplomanteController.js"></script>
+	<script src="js/controllers/formation/TypeFormationController.js"></script>
+	<!-- jQuery -->
+	<script src="js/libs/jquery.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="js/libs/bootstrap.min.js"></script>
+	<script src="js/libs/jsfile.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+
+<style type="text/css">
+	.my-group .form-control{
+	    width:50%;
+	}
+</style>
+	<div ng-controller="ClasseController as ctrl">
+			<div class="row"><!-- forms div -->	
+				<div>
+				<h1>add Class form :</h1>
+				<form name="addUserForm">
+				<div class="form-group">
+				 	<label>Nom de la classe :</label>
+				 	<input type="text" name="email" ng-model="ctrl.classe.nomClasse" class="form-control" type="text"  required>
+				 </div>
+				<div class="form-group">
+					<label  >Description de la classe</label> 
+					<input type="text" name="firstName" ng-model="ctrl.classe.descClasse" class="form-control" required>
+
+				</div>
+				
+				 <div class="form-group">
+					<label>Nbr etudiants : </label>
+					<input  type="number" name="lastName"  ng-model="ctrl.classe.nbrEtudiant" class="form-control"  rows="10" required placeholder="nbr etudiants"/>
+				</div>
+				<div class="form-group">
+							
+								<label class="col-md-2 control-lable" for="">Annee Scolaire</label>
+								<div class="col-md-16">
+									<select class="form-control input-sm" ng-model="ctrl.idAnne" >
+										<option ng-repeat="annee in ctrl.annees" value="{{annee.idAnne}}">{{annee.anneeDebut}}/{{annee.anneeFin}}</option>
+ 	                        
+ 	                              </select>								
+								</div>
+							
+							     	===> {{ctrl.idAnne}}
+				</div>
+			
+				</form>
+				
+				<div class="form-group">
+						<button ng-click="ctrl.addclasse(ctrl.idAnne)" class="btn btn-info"
+						ng-disabled="addUserForm.firstName.$invalid||
+						addUserForm.lastName.$invalid||addUserForm.email.$error.email
+						">add Class</button>
+						<button class="btn btn-danger" ng-click="ctrl.reset()" >Cancel</button>
+					</div>
+					
+				</div>
+			</div>
+			<div> <!-- begin of the panel-->
+			<h1>List des classses </h1>
+				      	<table class="table"><!-- the table of users  -->
+						<thead>
+							<tr>
+								<th>id</th>
+								<th>nom class</th>
+								<th>description</th>
+								<th>Nbr etudiants</th>
+								<th>detail</th>
+								<th>delete</th>	
+							</tr>
+						</thead>	
+						<tbody>
+							<tr ng-repeat="u in ctrl.classes">
+								<td>{{u.idClasse}}</td>
+								<td>{{u.nomClasse}}</td>
+								<td>{{u.descClasse}}</td>
+								<td>{{u.nbrEtudiant}}</td>
+								<td><button class="btn btn-info" ng-click="ctrl.getClasseDetail(u.idClasse)" >detail</button>
+								<td>	<button ng-click="ctrl.supprimer(u.idClasse)" class="btn btn-danger">delete</button>
+									
+								</td>								
+							</tr>
+						</tbody>
+					</table><!-- end of the table of users  -->
+					
+			      </div>
+			      
+			      
+			      
+			    </div>
+				  <!-- end of the panel-->
+			
+		<!-- the end of the controller div  -->
+	
+	

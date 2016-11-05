@@ -1,0 +1,81 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+.my-group .form-control {
+	width: 50%;
+}
+</style>
+<div ng-controller="MessageController as ctrl">
+	<div class="row">
+		<!-- forms div -->
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<span class="lead">Nouveau Message</span>
+			</div>
+
+			<form name="addUserForm">
+			
+				
+				<br>
+				<div class="row">
+					<div class="form-group col-md-12" ng-controller="EmailSuggestionController as EmailCtrl">
+						<label class="col-md-2 control-lable" for=""></label>
+						<div class="col-md-7">
+							<input type="text" name="email"
+						ng-model="ctrl.message.email" class="form-control" type="email"
+						list=emails placeholder="email :">
+						<datalist id=emails>
+						<option ng-repeat="user in EmailCtrl.users" value="{{user.email}}">
+					</datalist>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="form-group col-md-12" >
+						<label class="col-md-2 control-lable" for=""></label>
+						<div class="col-md-7">
+							<input type="text" name="firstName"
+						ng-model="ctrl.message.objet" class="form-control" required placeholder="Objet">
+						
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="form-group col-md-12" >
+						<label class="col-md-2 control-lable" for=""></label>
+						<div class="col-md-7">
+							<textarea name="lastName" ng-model="ctrl.message.message"
+						class="form-control" cols="73" rows="10" required>
+					Saisir votre message</textarea>
+						
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="form-group col-md-12" >
+						<label class="col-md-2 control-lable" for=""></label>
+						<div class="col-md-7">
+							<button ng-click="ctrl.addMessage()" class="btn btn-info"
+					ng-disabled="addUserForm.firstName.$invalid||
+						addUserForm.lastName.$invalid||addUserForm.email.$error.email
+						">Send
+					Message</button>
+				<button class="btn btn-danger">Cancel</button>
+						
+						</div>
+					</div>
+				</div>
+
+			</form>
+
+			
+
+		</div>
+	</div>
+
+	<!-- the end of the controller div  -->
+</div>
+
+</div>

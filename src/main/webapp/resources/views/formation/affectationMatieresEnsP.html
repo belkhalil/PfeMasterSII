@@ -1,0 +1,96 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<div class="generic-container"
+	ng-controller="affectationMatieresEnsPController as ctrl">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<span class="lead">Affectation des matieres aux enseignants
+				permanents </span>
+		</div>
+		<br>
+		<div class="formcontainer">
+			<form name="myForm" class="form-horizontal">
+				<input type="hidden" ng-model="ctrl.formation.id" />
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for=""></label>
+						<div class="col-md-7">
+							<select class="form-control input"
+								ng-model="ctrl.idSelectedensp" required>
+								<option value="">-- Enseignants Permanents --</option>
+								<option ng-repeat="e in ctrl.ensps" value="{{e.id}}">{{e.firstName
+									+" "+e.lastName}}</option>
+							</select>
+
+						</div>
+					</div>
+				</div>
+
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for=""></label>
+						<div class="col-md-7">
+							<select class="form-control input"
+								ng-model="ctrl.idSelectedMatiere" required>
+								<option value="">-- Matieres --</option>
+								<option ng-repeat="m in ctrl.matieres" value="{{m.idMatiere}}">{{m.nomMatiere}}
+								</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="form-group col-md-12">
+						<div class="col-md-2 control-lable"></div>
+						<div class="col-md-7">
+							<input type="button" ng-click="ctrl.update()" value="update"
+								class="btn btn-primary btn-sm"> <input type="button"
+								ng-click="ctrl.add()" value="affecter"
+								class="btn btn-primary btn-sm">
+							<button type="button" ng-click="ctrl.reset()"
+								class="btn btn-warning btn-sm">Annuler</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<!-- Default panel contents -->
+		<div class="panel-heading">
+			<span class="lead">List des affectations  </span>
+		</div>
+		<div class="tablecontainer">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Matieres</th>
+
+						<th>Enseignants</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="m in ctrl.matieres">
+						<td>{{m.nomMatiere }}</td>
+						<td>{{m.enseignant.firstName}}</td>
+
+						
+
+						<td>
+							<button type="button" ng-click="ctrl.edit(e.idFormation)"
+								class="btn btn-success custom-width">Edit</button>
+							<button type="button" ng-click="ctrl.remove(e.idFormation)"
+								class="btn btn-danger custom-width">Remove</button>
+							
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<div></div>
+
+

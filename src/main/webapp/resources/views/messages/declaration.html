@@ -1,0 +1,106 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+.my-group .form-control {
+	width: 50%;
+}
+</style>
+<div ng-controller="DeclarationController as ctrl">
+	<div class="row">
+		<!-- forms div -->
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<span class="lead">nouvelle declaration </span>
+			</div>
+			<form name="addUserForm">
+				<br>
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for=""></label>
+						<div class="col-md-7">
+						<select class="form-control input-lg"
+								ng-model="ctrl.declaration.typeDeclaration" required>
+								<option value="">-- type de declaration --</option>
+								<option value="Reclamation">Reclamation</option>
+								<option value="incident">Incident</option>
+								<option value="Plainte">Plainte</option>
+								<option value="Declaration de Perte">Declaration de Perte</option>
+								
+							</select> 
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for=""></label>
+						<div class="col-md-7">
+							<input type="text" name="firstName"
+								ng-model="ctrl.declaration.objet" class="form-control" required
+								placeholder="Objet">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for=""></label>
+						<div class="col-md-7">
+							<textarea name="lastName" ng-model="ctrl.declaration.contenu"
+								class="form-control" cols="73" rows="10" required>
+					Votre declaration</textarea>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for=""></label>
+						<div class="col-md-7">
+							<button ng-click="ctrl.addDeclaration()" class="btn btn-info"
+								ng-disabled="addUserForm.firstName.$invalid||
+						addUserForm.lastName.$invalid||addUserForm.email.$error.email
+						">Envoyer votre declaration</button>
+							<button class="btn btn-danger">Cancel</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="row">
+		<!-- begin of the panel-->
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<span class="lead">List de mes declarations</span>
+			</div>
+
+			<table class="table">
+				<!-- the table of users  -->
+				<thead>
+					<tr>
+						<th>id</th>
+						<th>objet</th>
+						<th>Contenu</th>
+						<th>type</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="u in ctrl.declarationsenv">
+						<td>{{u.idDeclaration}}</td>
+						<td>{{u.objet}}</td>
+						<td>{{u.contenu}}</td>
+						<td>{{u.typeDeclaration}}</td>
+						<td><button class="btn btn-info"
+								ng-click="ctrl.getDeclarationDetail(u.idDeclaration)">detail</button>
+						<td>
+							<button ng-click="ctrl.deleteDeclaration(u.idDeclaration)"
+								class="btn btn-danger">delete</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<!-- end of the table of users  -->
+		</div>
+	</div>
+</div>
+
+
+

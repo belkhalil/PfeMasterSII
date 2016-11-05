@@ -1,0 +1,66 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<div ng-controller="RightsController as ctrl">
+
+	<!-- wast -->
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<span class="lead">La liste des droits </span>
+		</div>
+		<fieldset>
+			<table class="table">
+				<tr>
+					<th>Le droit:</th>
+					<th>description :</th>
+					<th></th>
+				</tr>
+				<tr ng-repeat="right in ctrl.rights">
+					<td>{{right.name}}</td>
+					<td>{{right.disc}}</td>
+					<td>
+						<button class="btn btn-info" ng-click="ctrl.deleteRight(right.id)">desactiver</button>
+					</td>
+				</tr>
+			</table>
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-2 control-lable" for=""></label>
+					<div class="col-md-7">
+						<select ng-model="ctrl.category" class="form-control">
+						<option value="">--Groupe--</option>
+						<option ng-repeat="(key, data) in ctrl.categories">{{key}}</option>
+					</select>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-2 control-lable" for=""></label>
+					<div class="col-md-7">
+						<select ng-model="ctrl.name" class="form-control">
+						<option value="">--Liste des droits--</option>
+						<option ng-repeat="(key,data) in  ctrl.categories[ctrl.category]">
+							{{key}}</option>
+							</select>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-2 control-lable" for=""></label>
+					<div class="col-md-7">
+						<input type="text" ng-model="ctrl.disc" class="form-control" placeholder="decription">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-2 control-lable" for=""></label>
+					<div class="col-md-7">
+						<button class="btn btn-default col-lg-6" ng-click="ctrl.add()">
+						activer</button>
+					</div>
+				</div>
+			</div>
+		</fieldset>
+	</div>
+</div>

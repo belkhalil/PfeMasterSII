@@ -1,0 +1,32 @@
+	<!DOCTYPE html>
+	<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1" />
+<title>Insert title here</title>
+ <link href="../static/css/style.css"
+          th:href="@{/css/style.css}" rel="stylesheet" media="screen"/>
+</head>
+<body>
+
+	<form th:object="${msg}" th:action="@{/message/envoie}" method="post">
+    	<div>
+        	<label for="nom">Objet :</label>
+        	<input type="text" id="nom" th:field="*{objet}" />
+    	</div>
+    	<div>
+        	<label for="courriel">Email:</label>
+        	<input type="email" id="courriel" th:field="*{email}" />
+    	</div>
+    	<div>
+        	<label for="message">Message :</label>
+        	<!-- <textarea id="message" th:field="*{message}"></textarea>  -->
+        	<input type="text" id="mess" th:field="*{message}" />
+   		</div>
+    
+   		<div class="button">
+        	<button type="submit">Envoyer votre message</button>
+    	</div>
+	</form>
+<a href="/welcome.html">Retour</a>
+</body>
+</html>

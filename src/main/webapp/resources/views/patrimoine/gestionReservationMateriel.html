@@ -1,0 +1,54 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<div class="generic-container"
+	ng-controller="ReservationMaterielController as ctrl">
+
+	<div class="panel panel-default">
+		<!-- Default panel contents -->
+		<div class="panel-heading">
+			<span class="lead">List des reservation </span>
+		</div>
+		<div class="tablecontainer">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Materiel</th>
+						<th>Matricule</th>
+						<th>Le </th>
+						<th>Du </th>
+						<th>Jusqu'a</th>
+						<th>Par</th>
+						<th>L'etat</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr ng-repeat="r in ctrl.reservations">
+						<td>{{r.materiel.nomMateriel}}</td>
+						<td>{{r.materiel.matricule}}</td>
+						<td>{{r.dateRes}}</td>
+						<td>{{r.debutRes}} a {{r.heureDebut}}</td>
+						<td>{{r.finRes}} a {{r.heureFin}}</td>
+						<td>{{r.utilisateur.firstName}}  {{r.utilisateur.lastName}}</td>
+						<td>{{r.decision}}</td>
+
+						<td>
+							<button style="width: 75px" type="button"
+								ng-click="ctrl.valider(r.idResMateriel,r.materiel.idMateriel)"
+								class="btn btn-success  btn-xs">valider</button> <br>
+							<button style="width: 75px" type="button"
+								ng-click="ctrl.rejeter(r.idResMateriel,r.materiel.idMateriel)"
+								ng-model="ctrl.idSalleselected" class="btn btn-warning  btn-xs">rejeter</button>
+							<br>
+							<button style="width: 75px" href="#" type="button"
+								ng-click="ctrl.remove(r.idResMateriel)" confirm-if="checked"
+								confirm="Are you sure,?" class="btn btn-danger  btn-xs">supprimer</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+
+</div>
+

@@ -1,0 +1,286 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<div class="generic-container"
+	data-ng-controller="seanceController as ctrl">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<span class="lead">ajouter une seance </span>
+		</div>
+		<br>
+		<div class="formcontainer">
+			<form name="myForm" class="form-horizontal">
+				<input type="hidden" data-ng-model="ctrl.seance.idSeance" />
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for=""></label>
+						<div class="col-md-7">
+							<select class="form-control input"
+								data-ng-model="ctrl.idSelectedMatiere">
+								<option value="">-- Matieres --</option>
+								<option data-ng-repeat="m in ctrl.matieres"
+									value="{{m.idMatiere}}">{{m.nomMatiere}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for=""></label>
+						<div class="col-md-7">
+							<input type="text" data-ng-model="ctrl.seance.objet" id="objet"
+								class="form-control input-sm" placeholder="sujet de la seance" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for=""></label>
+						<div class="col-md-7">
+							<input type="text" onfocus="(this.type='date')" data-ng-model="ctrl.seance.dateSeance"
+								id="descSeance" class="form-control input-sm"
+								placeholder="la date de la seance" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for=""></label>
+						<div class="col-md-7">
+							
+							 <select class="form-control input-lg"
+								ng-model="ctrl.seance.heureDebut" >
+								<option value="">-- heure de debut --</option>
+								<option value="08h:00min">08h:00min</option>
+								<option value="08h:30min">08h:30min</option>
+								<option value="09h:00min">09h:00min</option>
+								<option value="09h:30min">09h:30min</option>
+								<option value="10h:00min">10h:00min</option>
+								<option value="10h:30min">10h:30min</option>
+								<option value="11h:00min">11h:00min</option>
+								<option value="11h:30min">11h:30min</option>
+								<option value="12h:00min">12h:00min</option>
+								<option value="12h:30min">12h:30min</option>
+								<option value="13h:00min">13h:00min</option>
+								<option value="13h:30min">13h:30min</option>
+								<option value="14h:00min">14h:00min</option>
+								<option value="14h:30min">14h:30min</option>
+								<option value="15h:00min">15h:00min</option>
+								<option value="15h:30min">15h:30min</option>
+								<option value="16h:00min">16h:00min</option>
+								<option value="16h:30min">16h:30min</option>
+								<option value="17h:00min">17h:00min</option>
+								<option value="17h:30min">17h:30min</option>
+								<option value="18h:00min">18h:00min</option>
+							</select> 
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for=""></label>
+						<div class="col-md-7">
+								<select class="form-control input-lg"
+								ng-model="ctrl.seance.heureFin" >
+								<option value="">-- heure de fin--</option>
+								<option value="08h:00min">08h:00min</option>
+								<option value="08h:30min">08h:30min</option>
+								<option value="09h:00min">09h:00min</option>
+								<option value="09h:30min">09h:30min</option>
+								<option value="10h:00min">10h:00min</option>
+								<option value="10h:30min">10h:30min</option>
+								<option value="11h:00min">11h:00min</option>
+								<option value="11h:30min">11h:30min</option>
+								<option value="12h:00min">12h:00min</option>
+								<option value="12h:30min">12h:30min</option>
+								<option value="13h:00min">13h:00min</option>
+								<option value="13h:30min">13h:30min</option>
+								<option value="14h:00min">14h:00min</option>
+								<option value="14h:30min">14h:30min</option>
+								<option value="15h:00min">15h:00min</option>
+								<option value="15h:30min">15h:30min</option>
+								<option value="16h:00min">16h:00min</option>
+								<option value="16h:30min">16h:30min</option>
+								<option value="17h:00min">17h:00min</option>
+								<option value="17h:30min">17h:30min</option>
+								<option value="18h:00min">18h:00min</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for=""></label>
+						<div class="col-md-7">
+						     <textarea data-ng-model="ctrl.seance.descSeance"
+								id="descSeance" class="form-control input-sm"
+								placeholder="desciption" rows="" cols=""></textarea>
+						</div>
+					</div>
+				</div>
+				<!--  
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for=""></label>
+						<div class="col-md-7">
+							<div class="checkbox">
+								<label><input type="checkbox" data-ng-model="myVar" value="">Recurrence</label>
+							</div>
+						</div>
+					</div>
+				</div>-->
+
+				<!-- -----------------------will be a modal------------------------- -->
+				<!--
+				<div class="col-md-1"></div>
+				<div class="panel  col-md-10" data-ng-show="myVar">
+					<div class="panel">
+						<span class="lead">Recurrence </span>
+					</div>
+
+					<div class="control-group ">
+						<div class="controls">
+							<span class="help-inline">Recurrent:</span>
+								<select data-ng-model="ctrl.nbrFois">
+								<option value="{{7}}">tout les jours</option>
+								<option value="{{5}}">tout les jours de la semaines (du lundi-au vendredi)</option>
+								<option value="{{77}}">tout les semaines</option>
+								</select>
+						 </div>
+					</div>
+					<br>
+                    <div class="control-group ">
+						<div class="controls">
+							<span class="help-inline">Repeter tout les:</span>
+								<select data-ng-model="ctrl.nbrSemaines">
+								
+								<option data-ng-repeat="n in [1,2,3,4,5,6,7,8,9] track by $index" value="{{n}}"> {{n}}</option>
+								</select>
+						<span class="help-inline">Semaines</span>
+						 </div>
+						 
+					</div>
+					<br>
+					<div class="control-group ">
+						<div class="controls">
+							<span class="help-inline">Repeter le:</span>
+								<input type="checkbox"><span class="help-inline">Lu</span>
+								<input type="checkbox"><span class="help-inline">Ma</span>
+								<input type="checkbox"><span class="help-inline">Me</span>
+								<input type="checkbox"><span class="help-inline">Je</span>
+								<input type="checkbox"><span class="help-inline">Ve</span>
+								<input type="checkbox"><span class="help-inline">Sa</span>
+								<input type="checkbox"><span class="help-inline">Di</span>
+						 </div>
+					</div>
+					
+				</div>
+		<div class="col-md-1"></div>
+		-->
+				<!-- ------------------------------------------------- -->
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<div class="col-md-2 control-lable"></div>
+						<div class="col-md-7">
+							<input type="button" data-ng-click="ctrl.update()" value="update"
+								class="btn btn-primary btn-sm"> <input type="button"
+								data-ng-click="ctrl.add()" value="add"
+								class="btn btn-primary btn-sm">
+							<button type="button" data-ng-click="ctrl.reset()"
+								class="btn btn-warning btn-sm">Annuler</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<!-- Default panel contents -->
+		<div class="panel-heading">
+			<span class="lead">List des seances </span>
+		</div>
+		<div class="tablecontainer">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>seances</th>
+						<th>Matiere</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr data-ng-repeat="s in ctrl.seances">
+						<td>{{$index +1}}</td>
+						<td>{{s.matiere.nomMatiere}}</td>
+						<td>
+							<button type="button" data-ng-click="ctrl.edit(s.idSeance)"
+								class="btn btn-success custom-width">Edit</button>
+							<button type="button" data-ng-click="ctrl.remove(s.idSeance)"
+								class="btn btn-danger custom-width">Remove</button>
+							<button type="button" data-ng-click="ctrl.show(s.idSeance)"
+								class="btn btn-primary custom-width">Details</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+
+	<div class="panel panel-default" data-ng-show="showMe">
+		<div class="panel-heading">
+			<span class="lead">details seance </span>
+		</div>
+		<form class="form-horizontal">
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Sujet</label>
+				<div class="col-sm-10">
+					<p class="form-control-static">
+						<span data-ng-bind="ctrl.Seanceshow.objet"></span>
+					</p>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">description</label>
+				<div class="col-sm-10">
+					<p class="form-control-static">
+						<span data-ng-bind="ctrl.Seanceshow.descSeance"></span>
+					</p>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-sm-2 control-label">la date de seance</label>
+				<div class="col-sm-10">
+					<p class="form-control-static">
+						<span data-ng-bind="ctrl.Seanceshow.dateSeance"></span>
+					</p>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">heure debut</label>
+				<div class="col-sm-10">
+					<p class="form-control-static">
+						<span data-ng-bind="ctrl.Seanceshow.heureDebut"></span>
+					</p>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">heure fin</label>
+				<div class="col-sm-10">
+					<p class="form-control-static">
+						<span data-ng-bind="ctrl.Seanceshow.heureFin"></span>
+					</p>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">matiere</label>
+				<div class="col-sm-10">
+					<p class="form-control-static">
+						<span data-ng-bind="ctrl.Seanceshow.matiere.nomMatiere"></span>
+					</p>
+				</div>
+			</div>
+
+		</form>
+	</div>
+</div>

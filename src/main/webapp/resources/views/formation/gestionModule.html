@@ -1,0 +1,159 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<div class="generic-container" ng-controller="ModuleController as ctrl">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<span class="lead">ajouter un module </span>
+		</div>
+		<br>
+		<div class="formcontainer">
+			<form name="myForm" class="form-horizontal" ng-submit="ctrl.add()">
+				<input type="hidden" ng-model="ctrl.module.idModule" />
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for=""></label>
+						<div class="col-md-7">
+							<select class="form-control input"
+								ng-model="ctrl.idSelectedSemestre"
+								required-err-type="reqNomFormationD" required>
+								<option value="" disabled="disabled">-- Semestres --</option>
+								<option ng-repeat="s in ctrl.semestres" value="{{s.idSemestre}}">{{s.nomSemestre}}</option>
+							</select>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for=""></label>
+						<div class="col-md-7">
+							<input type="text" ng-model="ctrl.module.nomModule" id="nom"
+								class="form-control input-sm" placeholder="nom du module"
+								required-err-type="reqNomFormationD" required/>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for=""></label>
+						<div class="col-md-7">
+								<textarea ng-model="ctrl.module.descModule"
+								id="description" class="form-control input-sm"
+								placeholder="ajouter une decription" 
+								required-err-type="reqNomFormationD" required rows="" cols=""></textarea>
+						</div>
+					</div>
+				</div>
+
+				<!--  
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-2 control-lable" for=""></label>
+								<div class="col-md-7">
+									<select class="form-control input-sm"
+										ng-model="ctrl.idSelectedMatiere">
+										<option value="" disabled="disabled">-- Matieres --</option>
+										<option ng-repeat="m in ctrl.matieres"
+											value="{{m.idMatiere}}">{{m.nomMatiere}}</option>
+									</select>
+
+								</div>
+							</div>
+						</div>
+						-->
+				<div class="row">
+					<div class="form-group col-md-12">
+						<div class="col-md-2 control-lable"></div>
+						<div class="col-md-7">
+							<input type="button" ng-click="ctrl.update()" value="update"
+								class="btn btn-primary btn-sm"> 
+							<input type="submit"
+								value="add" class="btn btn-primary btn-sm">
+							<button type="button" ng-click="ctrl.reset()"
+								class="btn btn-warning btn-sm">Annuler</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<!-- Default panel contents -->
+		<div class="panel-heading">
+			<span class="lead">List des modules </span>
+		</div>
+		<div class="tablecontainer">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Modules</th>
+						<th>Semestres</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="e in ctrl.modules">
+						<td>{{e.nomModule}}</td>
+						<td>
+							<dl ng-repeat="s in e.semestres">
+								<dt>{{s.nomSemestre}}</dt>
+							</dl>
+						</td>
+						<td>
+							<button type="button" ng-click="ctrl.edit(e.idModule)"
+								class="btn btn-success custom-width">Edit</button>
+							<button type="button" ng-click="ctrl.remove(e.idModule)"
+								class="btn btn-danger custom-width">Remove</button>
+							<button type="button" ng-click="ctrl.show(e.idModule)"
+								class="btn btn-primary custom-width" data-toggle="modal"
+								data-target=".bd-example-modal-lg">Details</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+		aria-labelledby="myLargeModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div data-ng-show="showMe">
+					<div class="panel-heading">
+						<span class="lead">details module </span>
+					</div>
+
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">nom du module</label>
+							<div class="col-sm-10">
+								<p class="form-control-static">
+									<span ng-bind="ctrl.moduleshow.nomModule"></span>
+								</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">description</label>
+							<div class="col-sm-10">
+								<p class="form-control-static">
+									<span ng-bind="ctrl.moduleshow.descModule"></span>
+								</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">semestre</label>
+							<div class="col-sm-10 form-control-static">
+								<ul>
+									<li ng-repeat="f in ctrl.moduleshow.semestres">
+										{{f.nomSemestre}}</li>
+								</ul>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

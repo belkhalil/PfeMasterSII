@@ -1,0 +1,162 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<div class="generic-container" ng-controller="ReservationMaterielController as ctrl">
+
+	<div class="panel panel-default">
+		<!-- Default panel contents -->
+		<div class="panel-heading">
+			<span class="lead">List des materiels </span>
+		</div>
+		<div class="tablecontainer">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Materiel</th>
+						<th>Matricule</th>
+						<th>description</th>
+						<th>l'etat de materiel</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="m in ctrl.materiels">
+						<td>{{m.nomMateriel}}</td>
+						<td>{{m.matricule}}</td>
+						<td><textarea class="form-control input-sm"
+								readonly="readonly" rows="2" cols="18"> {{m.description}}</textarea></td>
+						<td>{{m.labelEtat}}</td>
+						<td>
+							<button type="button" ng-click="ctrl.getIdMateriel(m.idMateriel)"
+								class="btn btn-primary custom-width" data-toggle="modal"
+								data-target=".bd-example-modal-lg">reserver</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+		aria-labelledby="myLargeModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="panel-heading">
+					<span class="lead">Reservation </span>
+				</div>
+				<br>
+				<div class="formcontainer">
+					<form name="myForm" class="form-horizontal">
+						<input type="hidden" ng-model="ctrl.reservation.idResMateriel" />
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-2 control-lable" for=""></label>
+								<div class="col-md-3">
+									<select class="form-control input"
+										ng-model="ctrl.reservation.heureDebut">
+										<option value="">-- heure de debut --</option>
+										<option value="08h:00min">08h:00min</option>
+										<option value="08h:30min">08h:30min</option>
+										<option value="09h:00min">09h:00min</option>
+										<option value="09h:30min">09h:30min</option>
+										<option value="10h:00min">10h:00min</option>
+										<option value="10h:30min">10h:30min</option>
+										<option value="11h:00min">11h:00min</option>
+										<option value="11h:30min">11h:30min</option>
+										<option value="12h:00min">12h:00min</option>
+										<option value="12h:30min">12h:30min</option>
+										<option value="13h:00min">13h:00min</option>
+										<option value="13h:30min">13h:30min</option>
+										<option value="14h:00min">14h:00min</option>
+										<option value="14h:30min">14h:30min</option>
+										<option value="15h:00min">15h:00min</option>
+										<option value="15h:30min">15h:30min</option>
+										<option value="16h:00min">16h:00min</option>
+										<option value="16h:30min">16h:30min</option>
+										<option value="17h:00min">17h:00min</option>
+										<option value="17h:30min">17h:30min</option>
+										<option value="18h:00min">18h:00min</option>
+									</select>
+								</div>
+								
+								<div class="col-md-3">
+									<select class="form-control input"
+										ng-model="ctrl.reservation.heureFin">
+										<option value="">-- heure de debut --</option>
+										<option value="08h:00min">08h:00min</option>
+										<option value="08h:30min">08h:30min</option>
+										<option value="09h:00min">09h:00min</option>
+										<option value="09h:30min">09h:30min</option>
+										<option value="10h:00min">10h:00min</option>
+										<option value="10h:30min">10h:30min</option>
+										<option value="11h:00min">11h:00min</option>
+										<option value="11h:30min">11h:30min</option>
+										<option value="12h:00min">12h:00min</option>
+										<option value="12h:30min">12h:30min</option>
+										<option value="13h:00min">13h:00min</option>
+										<option value="13h:30min">13h:30min</option>
+										<option value="14h:00min">14h:00min</option>
+										<option value="14h:30min">14h:30min</option>
+										<option value="15h:00min">15h:00min</option>
+										<option value="15h:30min">15h:30min</option>
+										<option value="16h:00min">16h:00min</option>
+										<option value="16h:30min">16h:30min</option>
+										<option value="17h:00min">17h:00min</option>
+										<option value="17h:30min">17h:30min</option>
+										<option value="18h:00min">18h:00min</option>
+									</select>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-2 control-lable" for=""></label>
+								<div class="col-md-7">
+									<input type="text" ng-model="ctrl.reservation.debutRes" id="datedebut"
+										class="form-control input-sm"
+										placeholder="date de debut" type="text"
+										onfocus="(this.type='date')"
+										required-err-type="reqNomFormationD" required />
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-2 control-lable" for=""></label>
+								<div class="col-md-7">
+									<input type="text" ng-model="ctrl.reservation.finRes" id="datefin"
+										class="form-control input-sm"
+										placeholder="date de fin" type="text"
+										onfocus="(this.type='date')"
+										required-err-type="reqNomFormationD" required />
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-2 control-lable" for=""></label>
+								<div class="col-md-7">
+									<textarea ng-model="ctrl.reservation.DescReservation" id="description"
+										class="form-control input-sm"
+										placeholder="ajouter une decription" rows="" cols=""></textarea>
+
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group col-md-12">
+								<div class="col-md-2 control-lable"></div>
+								<div class="col-md-7">
+									<input type="button" ng-click="ctrl.add()" value="Valider"
+										class="btn btn-primary btn-sm"> 
+									<button type="button" ng-click="ctrl.reset()"
+										class="btn btn-warning btn-sm">Annuler</button>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

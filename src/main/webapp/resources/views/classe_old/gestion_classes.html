@@ -1,0 +1,45 @@
+
+<style type="text/css">
+	.my-group .form-control{
+	    width:50%;
+	}
+</style>
+	<div ng-controller="ClasseController as ctrl">
+			<div> <!-- begin of the panel-->
+			<h1>Liste des etudiants </h1>
+				      	<table class="table"><!-- the table of users  -->
+						<thead>
+							<tr>
+								<th>id</th>
+								<th>nom/Prenom</th>
+								<th>Formation</th>
+								
+								<th>Choix de Classe</th>
+								<th>Add to class</th>	
+							</tr>
+						</thead>	
+						<tbody>
+							<tr ng-repeat="u in ctrl.inscriptions">
+								<td>{{u.etudiant.idUtilisateur}}</td>
+								<td>{{u.etudiant.nomUtilisateur}} {{u.etudiant.prenomUtilisateur}}</td>
+								<td>{{u.formation.nomFormation}}</td>								
+								<td class="col-md-16"> 
+								
+									<select class="form-control input-sm" ng-model="classe.idClasse" >
+										<option ng-repeat="classe in ctrl.classes" value="{{classe.idClasse}}">{{classe.nomClasse}}</option>
+ 	                        
+ 	                              	</select>								
+								</td>
+								
+								<td>	<button ng-click="ctrl.addStudentToClasse(u.etudiant.idUtilisateur , classe.idClasse)" class=" btn-info">Add Student</button>
+									
+								</td>
+							</tr>
+						</tbody>
+					</table><!-- end of the table of users  -->
+					
+			      </div>
+			    </div>
+				  <!-- end of the panel-->
+			
+		<!-- the end of the controller div  -->

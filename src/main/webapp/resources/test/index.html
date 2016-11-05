@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Landing Page</title>
+  <link href="css/login.css" rel="stylesheet">
+  <link href="css/contact.css" rel="stylesheet">
+  <!-- Bootstrap Core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link href="css/landing-page.css" rel="stylesheet">
+
+  <!-- Custom Fonts -->
+  <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+</head>
+
+<body ng-app="myApp" ng-controller="LoginController as MainCtrl">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+    <div class="container topnav">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand topnav" href="#">Logo</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="#about"data-toggle="modal" data-target="#contact" data-original-title>Contactez nous</a>
+          </li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+  </nav>
+
+
+  <!-- Header -->
+  <a name="about"></a>
+  <div class="intro-header">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="intro-message">
+            <h1>Bienvenue sur notre platforme</h1>
+            <h3>Identifiez-vous comme:</h3>
+            <hr class="intro-divider">
+            <ul class="list-inline intro-social-buttons">
+              <li>
+                <a class="btn btn-default btn-lg" ng-click="MainCtrl.loadAdmin()" ><i class="glyphicon glyphicon-user"></i> <span class="network-name" href="#" data-toggle="modal" data-target="#login-modal">Espace Administration</span></a>
+              </li>
+              <li>
+                <a  class="btn btn-default btn-lg" ng-click="MainCtrl.loadParent()" ><i class="glyphicon glyphicon-user"></i> <span class="network-name"  href="#" data-toggle="modal" data-target="#login-modal">Espace Parent</span></a>
+              </li>
+              <li>
+                <a  class="btn btn-default btn-lg" ng-click="MainCtrl.loadEnseignant()" ><i class="glyphicon glyphicon-user"></i> <span class="network-name"  href="#" data-toggle="modal" data-target="#login-modal">Espace Enseignant</span></a>
+              </li>
+              <li>
+                <a  class="btn btn-default btn-lg" ng-click="MainCtrl.loadEtudiant()" ><i class="glyphicon glyphicon-user"></i> <span class="network-name"  href="#" data-toggle="modal" data-target="#login-modal">Espace Etudiant</span></a>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- /.container -->
+
+  </div>
+  <!-- /.intro-header -->
+
+
+  <!-- login modal -->
+  <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <span class="glyphicon glyphicon-lock"></span> Authentification</div>
+          <div class="panel-body">
+            <form class="form-horizontal" role="form">
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">
+                  Login</label>
+                  <div class="col-sm-9">
+                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email" ng-model="MainCtrl.user.email" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-3 control-label">
+                    Mot de passe</label>
+                    <div class="col-sm-9">
+                      <input type="password" class="form-control" id="inputPassword3" placeholder="Password" ng-model="MainCtrl.user.password"  required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-9">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox"/>
+                          Remember me
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group last">
+                    <div class="col-sm-offset-3 col-sm-9">
+                      <button type="submit" class="btn btn-success btn-sm" ng-click="MainCtrl.login()">
+                        Valider</button>
+                        <button type="reset" class="btn btn-default btn-sm">
+                          Annuler</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="panel-footer">
+                    <div class="login-help">
+                      <a href="#">inscrire</a> - <a href="#">Mot de passe oublier?</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /login modal -->
+
+            <!-- Modal Contact -->
+            <div class="container">
+              <div class="row">
+                <div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="panel-title" id="contactLabel"><span class="glyphicon glyphicon-info-sign"></span> Avez vous un problem/questions ?</h4>
+                      </div>
+                      <form action="#" method="post" accept-charset="utf-8">
+                        <div class="modal-body" style="padding: 5px;">
+                          <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
+                              <input class="form-control" name="firstname" placeholder="Prenom" type="text" required autofocus />
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
+                              <input class="form-control" name="lastname" placeholder="Nom" type="text" required />
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                              <input class="form-control" name="email" placeholder="E-mail" type="text" required />
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                              <input class="form-control" name="subject" placeholder="Object" type="text" required />
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                              <textarea style="resize:vertical;" class="form-control" placeholder="Message..." rows="6" name="comment" required></textarea>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="panel-footer" style="margin-bottom:-14px;">
+                          <input type="submit" class="btn btn-success" value="Envoyer"/>
+                          <!--<span class="glyphicon glyphicon-ok"></span>-->
+                          <input type="reset" class="btn btn-danger" value="Annuler" />
+                          <!--<span class="glyphicon glyphicon-remove"></span>-->
+                          <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">Fermer</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /Modal Contact -->
+
+
+              <!-- jQuery -->
+              <script src="js/contact.js"></script>
+              <script src="../js/libs/angular.min.js"></script>
+			  <script src="../js/libs/angular-route.js"></script>
+			  <script src="../js/libs/jquery-2.2.1.js"></script>
+
+              <!-- Bootstrap Core JavaScript -->
+              <script src="js/bootstrap.min.js"></script>
+			  <script src="app_test.js"></script>
+			  <script src="login_test.js"></script>
+            </body>
+
+            </html>

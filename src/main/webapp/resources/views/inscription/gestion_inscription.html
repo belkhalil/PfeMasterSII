@@ -1,0 +1,46 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<div  ng-controller="gestionController">
+		<div class="panel panel-default">
+		<div class="panel-heading">
+			<span class="lead">List des nouvelles inscriptions </span>
+		</div>
+			
+				      	<table class="table"><!-- the table of users  -->
+						<thead>
+							<tr>
+								<!-- <th>id</th> -->
+								<th>Nom et Prenom</th>
+								<th>email</th>
+								<th>cin</th>
+								<th>Etat Compte</th>
+								
+							</tr>
+						</thead>	
+						<tbody>
+							<tr ng-repeat="user in users">
+								<!-- <td>{{user.id}}</td> -->
+								<td>{{user.firstName}} {{user.lastName}}</td>
+								<td>{{user.email}}</td>
+								<td>{{user.cin}}</td>
+								<td ng-class="bool(user.etatCompte)">{{user.etatCompte == true ? 'Valide' : 'Invalide' }}</td>
+								<td>
+								<button class="btn btn-success  btn-xs" style="width: 75px" type="button" ng-class="changeCss(user.etatCompte)" ng-click="valider(user.id)" >{{user.etatCompte == true ? 'Desactiver' : 'Activer' }}</button>
+						           <br>
+						           <button class="btn btn-default  btn-xs" style="width: 75px" type="button" ng-click="rejeter(user.id)" >Rejeter</button>
+							
+							<br>
+							<button class="btn btn-danger  btn-xs" style="width: 75px" href="#" type="button" class="btn-danger" ng-click="supprimer(user.id)" >Suprrimer</button>
+				
+						</td>
+								<td>
+								
+							    
+							    
+							    </td>
+							</tr>
+						</tbody>
+					</table><!-- end of the table of users  -->
+					
+		</div>
+</div>
+		    

@@ -1,0 +1,176 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<div class="generic-container"
+	ng-controller="SemestreController as ctrl">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<span class="lead">ajouter une semestre </span>
+		</div>
+		<br>
+		<div class="formcontainer">
+			<form name="myForm" class="form-horizontal" ng-submit="ctrl.add()">
+				<input type="hidden" ng-model="ctrl.semestre.idSemestre" />
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for=""></label>
+						<div class="col-md-7">
+							<select class="form-control input"
+								ng-model="ctrl.idSelectedNiveau"
+								required-err-type="reqNomFormationD" required>
+								<option value="">-- Niveaux --</option>
+								<option ng-repeat="n in ctrl.niveaux" value="{{n.idNiveau}}">{{n.nomNiveau}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for=""></label>
+						<div class="col-md-7">
+							<input type="text" ng-model="ctrl.semestre.nomSemestre" id="cin"
+								class="form-control input-sm" placeholder="nom" 
+								required-err-type="reqNomFormationD" required/>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for=""></label>
+						<div class="col-md-7">
+							<input type="text" onfocus="(this.type='date')" datetime="yyyy-MM-dd"
+								ng-model="ctrl.semestre.dateDebut" id="dateD"
+								class="form-control input-sm"
+								placeholder="date de debut de semestre"
+								required-err-type="reqNomFormationD" required />
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for=""></label>
+						<div class="col-md-7">
+							<input type="text" datetime="yyyy-MM-dd"
+								ng-model="ctrl.semestre.dateFin" id="dateF"
+								class="form-control input-sm"
+								onfocus="(this.type='date')"
+								placeholder="date fin de semestre"
+								required-err-type="reqNomFormationD" required />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for=""></label>
+						<div class="col-md-7">
+						<textarea  ng-model="ctrl.semestre.description" id="cin"
+								class="form-control input-sm" placeholder="description" 
+								required-err-type="reqNomFormationD" required rows="" cols=""></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-12">
+						<div class="col-md-2 control-lable"></div>
+						<div class="col-md-7">
+							<input type="button" ng-click="ctrl.update()" value="update"
+								class="btn btn-primary btn-sm"> 
+							<input type="submit"
+								 value="add" class="btn btn-primary btn-sm">
+							<button type="button" ng-click="ctrl.reset()"
+								class="btn btn-warning btn-sm">Annuler</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<!-- Default panel contents -->
+		<div class="panel-heading">
+			<span class="lead">List des semestre </span>
+		</div>
+		<div class="tablecontainer">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>semestres</th>
+						<th>Niveaux</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="s in ctrl.semestres">
+						<td>{{s.nomSemestre}}</td>
+
+						<td>{{s.niveau.nomNiveau}}</td>
+
+						<td>
+							<button type="button" ng-click="ctrl.edit(s.idSemestre)"
+								class="btn btn-success custom-width">Edit</button>
+							<button type="button" ng-click="ctrl.remove(s.idSemestre)"
+								class="btn btn-danger custom-width">Remove</button>
+							<button type="button" ng-click="ctrl.show(s.idSemestre)"
+								class="btn btn-primary custom-width" data-toggle="modal"
+								data-target=".bd-example-modal-lg">Details</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+		aria-labelledby="myLargeModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div ng-show="showMe">
+					<div class="panel-heading">
+						<span class="lead">details semestre </span>
+					</div>
+
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">nom du semestre</label>
+							<div class="col-sm-10">
+								<p class="form-control-static">
+									<span ng-bind="ctrl.semestreshow.nomSemestre"></span>
+								</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">date de debut</label>
+							<div class="col-sm-10">
+								<p class="form-control-static">
+									<span ng-bind="ctrl.semestreshow.dateDebut"></span>
+								</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">date de fin</label>
+							<div class="col-sm-10">
+								<p class="form-control-static">
+									<span ng-bind="ctrl.semestreshow.dateFin"></span>
+								</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">description</label>
+							<div class="col-sm-10">
+								<p class="form-control-static">
+									<span ng-bind="ctrl.semestreshow.description"></span>
+								</p>
+							</div>
+						</div>
+						<!--  <div class="form-group">
+						<label class="col-sm-2 control-label">description</label>
+						<div class="col-sm-10 form-control-static">
+								 <ul>
+								  <li ng-repeat="f in ctrl.semestreshow.description"> {{f.nomFormation}} </li>
+								 </ul>
+						</div>
+					</div> -->
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

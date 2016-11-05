@@ -1,0 +1,89 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<div ng-controller="UserDetailCtrl as ctrl">
+<div class="col-sm-12 well">
+<form class="form-horizontal" ng-submit="ctrl.onSubmit()" name="theForm" novalidate>
+        <fieldset>
+
+          <!-- Form Name -->
+          <legend>Donnees personnelles</legend>
+
+          <div class="form-group">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+              <label for="">Nom:</label>
+              <input name="nom" type="text"
+              ng-model="ctrl.user.firstName"
+              placeholder="ecrivez votre nom"
+              class="form-control input-md"
+              ng-minlength="3"
+              ng-maxlength="20"
+              required-err-type="reqName"
+              required/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+              <label for="">Prenom:</label>
+              <input id="textinput" name="prenom"
+              type="text" ng-model="ctrl.user.lastName"
+              placeholder="ecrivez votre prenom"
+              class="form-control input-md"
+              required-err-type="reqPrenom"
+              required>
+            </div>
+          </div>
+
+		 <div class="form-group">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+              <label for="">Adresse mail:</label>
+              <input id="textinput" name="email" type="email"
+              ng-model="ctrl.user.email"
+              placeholder="ecrivez votre Email"
+              class="form-control input-md"
+              required-err-type="reqEmail"
+              required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+              <label for="">Numero de telephone fix:</label>
+              <input id="textinput" name="telfix"
+              ng-model="ctrl.user.telephone"
+              type="number"
+              ng-minlength="10"
+              ng-maxlength="10"
+              placeholder="ecrivez votre num de telephone"
+              class="form-control input-md"
+              disable-valid-styling="true">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+              	<img width="100%" src="{{ctrl.imageLink}}">
+            </div>
+          </div>
+           <div class="form-group">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+              	 <input type="file" file-model="ctrl.file"/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-3">
+              <button type="submit" class="btn btn-primary">Valider</button>
+              <button type="reset" class="btn btn-warning">Annuler</button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+	</div>
+</div>

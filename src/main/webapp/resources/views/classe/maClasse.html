@@ -1,0 +1,78 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+	.my-group .form-control{
+	    width:50%;
+	}
+</style>
+	<div ng-controller="MaClasseController as ctrl" >
+	<div ng-if="ctrl.classe">
+		<div class="col-md-12 ">
+		<div class="panel panel-info spacer">
+		<div class="panel-heading"> Ma classe </div>
+			<table>
+				<tr >
+								<td><button class="btn btn-success" ng-click="ctrl.listerStudents(ctrl.classe.idClasse)" ng-model="ctrl.classe.idClasse" >{{ctrl.classe.nomClasse}}</button>
+								
+				</tr>
+			</table>				
+		</div>
+		</div>
+		
+		<div ng-if="ctrl.etudiants"> <!-- begin of the panel-->
+			<h1>List de mes camarades de classe</h1>
+				      	<table class="table"><!-- the table of users  -->
+						<thead>
+							<tr>
+								<th>id</th>
+								<th>nom/prenom </th>
+								<th>num tel</th>
+								<th>Contacter</th>
+							</tr>
+						</thead>	
+						<tbody>
+							<tr ng-repeat="u in ctrl.etudiants">
+								<td>{{u.id}}</td>
+								<td>{{u.lastName}} {{u.firstNamer}}</td>
+								<td>{{u.email}}</td>
+								<td><button class="btn btn-success" ng-click="ctrl.contacter(u.email)" >Envoyer un message</button>
+								
+							</tr>
+						</tbody>
+					</table><!-- end of the table of users  -->
+					
+			      </div>
+			      <div class="col-md-12 ">
+		<div class="panel panel-info spacer" ng-if="ctrl.email">
+		<div class="panel-heading"> Send Message </div>
+				<form name="addUserForm">
+				 <div class="form-group">
+				 	<label>email :</label>
+				 	<input type="text" name="email" ng-model="ctrl.message.email" class="form-control" type="email"  required ng-readonly="true">
+				 </div>
+				<div class="form-group">
+					<label  >Objet:</label> 
+					<input type="text" name="firstName" ng-model="ctrl.message.objet" class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label>message :</label>
+					<textarea name="lastName"  ng-model="ctrl.message.message" class="form-control" cols="73" rows="10" required>
+					Saisir votre message</textarea>
+				</div>
+				 
+				</form>
+				
+				<div class="form-group">
+						<button ng-click="ctrl.addMessage()" class="btn btn-info"
+						ng-disabled="addUserForm.firstName.$invalid||
+						addUserForm.lastName.$invalid||addUserForm.email.$error.email
+						">Send Message</button>
+						<button class="btn btn-danger">Cancel</button>
+					</div>			
+		</div>
+		</div>
+		</div>
+			      
+	  </div>
+ <!-- end of the panel-->
+			
+<!-- the end of the controller div  -->

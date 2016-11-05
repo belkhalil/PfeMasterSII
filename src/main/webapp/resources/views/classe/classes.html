@@ -1,0 +1,133 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+.my-group .form-control {
+	width: 50%;
+}
+</style>
+<div ng-controller="ClasseController as ctrl">
+
+	<!-- forms div -->
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<span class="lead">Ajouter un Classe: </span>
+		</div>
+		<div class="formcontainer">
+			<form name="addUserForm" class="form-horizontal">
+			<br>
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for=""></label>
+						<div class="col-md-7">
+							<input type="text" name="email" ng-model="ctrl.classe.nomClasse"
+								class="form-control" type="text" required
+								placeholder="Nom de la classe">
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for=""></label>
+						<div class="col-md-7">
+							<input type="text" name="firstName"
+								ng-model="ctrl.classe.descClasse" class="form-control" required
+								placeholder="Description de la classe">
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for=""></label>
+						<div class="col-md-7">
+							<input type="number" name="lastName"
+								ng-model="ctrl.classe.nbrEtudiant" class="form-control"
+								rows="10" required placeholder="nbr etudiants" />
+						</div>
+					</div>
+				</div>
+
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for=""></label>
+						<div class="col-md-7">
+							<select class="form-control input-lg" ng-model="ctrl.idAnne"
+								required>
+								<option value="">-- Annee Scolaire --</option>
+								<option ng-repeat="annee in ctrl.annees"
+									value="{{annee.idAnne}}">{{annee.anneeDebut}}/{{annee.anneeFin}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<br>
+				<div class="row">
+					<div class="form-group col-md-12">
+						<div class="col-md-2 control-lable"></div>
+						<div class="col-md-7">
+							<button ng-click="ctrl.addclasse(ctrl.idAnne)"
+								class="btn btn-primary"
+								ng-disabled="addUserForm.firstName.$invalid||
+						addUserForm.lastName.$invalid||addUserForm.email.$error.email
+						">add
+								Class</button>
+							<button class="btn btn-warning" ng-click="ctrl.reset()">Cancel</button>
+						</div>
+					</div>
+				</div>
+
+
+			</form>
+		</div>
+
+
+	</div>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<span class="lead">List des classses</span>
+		</div>
+		<!-- begin of the panel-->
+
+		<table class="table">
+			<!-- the table of users  -->
+			<thead>
+				<tr>
+					<th>id</th>
+					<th>nom classe</th>
+					<th>description</th>
+					<th>Nbr etudiants</th>
+					<th>detail</th>
+					<th>delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="u in ctrl.classes">
+					<td>{{u.idClasse}}</td>
+					<td>{{u.nomClasse}}</td>
+					<td>{{u.descClasse}}</td>
+					<td>{{u.nbrEtudiant}}</td>
+					<td><button class="btn btn-info"
+							ng-click="ctrl.getClasseDetail(u.idClasse)">detail</button>
+					<td>
+						<button ng-click="ctrl.supprimer(u.idClasse)"
+							class="btn btn-danger">delete</button>
+
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- end of the table of users  -->
+
+	</div>
+
+
+
+</div>
+<!-- end of the panel-->
+
+<!-- the end of the controller div  -->
+
+

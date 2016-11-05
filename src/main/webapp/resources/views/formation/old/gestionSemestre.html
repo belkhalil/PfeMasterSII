@@ -1,0 +1,163 @@
+<div class="w3-container" style="margin-left:25%">
+		<div class="generic-container">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<span class="lead">ajouter une semestre </span>
+				</div>
+				<br>
+				<div class="formcontainer">
+					<form name="myForm" class="form-horizontal">
+						<input type="hidden" ng-model="ctrl.semestre.idSemestre" />
+					
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-2 control-lable" for=""></label>
+								<div class="col-md-7">
+									<input type="text" ng-model="ctrl.semestre.nomSemestre"
+										id="cin" class="form-control input-sm" placeholder="nom" />
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+								<div class="form-group col-md-12">
+									<label class="col-md-2 control-lable" for=""></label>
+									<div class="col-md-7">
+										<input type="text" datetime="yyyy-MM-dd"
+											ng-model="ctrl.semestre.dateDebut" id="dateD"
+											class="form-control input-sm"
+											placeholder="date de debut de semestre / yyyy-MM-dd" />
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label class="col-md-2 control-lable" for=""></label>
+									<div class="col-md-7">
+										<input type="text" datetime="yyyy-MM-dd"
+											ng-model="ctrl.semestre.dateFin" id="dateF"
+											class="form-control input-sm"
+											placeholder="date fin de semestre / yyyy-MM-dd" />
+									</div>
+								</div>
+							</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-2 control-lable" for=""></label>
+								<div class="col-md-7">
+									<input type="text" ng-model="ctrl.semestre.description"
+										id="cin" class="form-control input-sm" placeholder="description" />
+								</div>
+							</div>
+						</div>
+							<div class="row">
+							<div class="form-group col-md-12">
+								<div class="col-md-2 control-lable"></div>
+								<div class="col-md-7">
+									<input type="button" ng-click="ctrl.update()" value="update"
+										class="btn btn-primary btn-sm"> <input type="button"
+										ng-click="ctrl.add()" value="add"
+										class="btn btn-primary btn-sm">
+									<button type="button" ng-click="ctrl.reset()"
+										class="btn btn-warning btn-sm">Annuler</button>
+								</div>
+							</div>
+							</div>
+							
+					</form>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<!-- Default panel contents -->
+				<div class="panel-heading">
+					<span class="lead">List des semestre </span>
+				</div>
+				<div class="tablecontainer">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+
+								<th>semestre</th>
+								<th>date de debut</th>
+								<th>date de fin</th>
+								<th>description</th>
+
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="e in ctrl.semestres">
+								<td>{{e.nomSemestre}}</td>
+								<td>{{e.dateDebut}}</td>
+								<td>{{e.dateFin}}</td>
+								<td>{{e.description}}</td>
+								<!-- <td>
+								<ul>
+								  <li ng-repeat="f in e.formations"> {{f.nomFormation}} </li>
+								 </ul>
+								</td>-->
+								
+								<td>
+									<button type="button" ng-click="ctrl.edit(e.idSemestre)"
+										class="btn btn-success custom-width">Edit</button>
+									<button type="button" ng-click="ctrl.remove(e.idSemestre)"
+										class="btn btn-danger custom-width" >Remove</button>
+									<button type="button" ng-click="ctrl.show(e.idSemestre)"
+										class="btn btn-primary custom-width">consulter infos</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		
+			<div class="panel panel-default" ng-show="showMe">
+				<div class="panel-heading">
+					<span class="lead">details semestre </span>
+				</div>
+
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label class="col-sm-2 control-label">nom du semestre</label>
+						<div class="col-sm-10">
+							<p class="form-control-static">
+								<span ng-bind="ctrl.semestreshow.nomSemestre"></span>
+							</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">date de debut</label>
+						<div class="col-sm-10">
+							<p class="form-control-static">
+								<span ng-bind="ctrl.semestreshow.dateDebut"></span>
+							</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">date de fin</label>
+						<div class="col-sm-10">
+							<p class="form-control-static">
+								<span ng-bind="ctrl.semestreshow.dateFin"></span>
+							</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">description</label>
+						<div class="col-sm-10">
+							<p class="form-control-static">
+								<span ng-bind="ctrl.semestreshow.description"></span>
+							</p>
+						</div>
+					</div>
+					<!--  <div class="form-group">
+						<label class="col-sm-2 control-label">description</label>
+						<div class="col-sm-10 form-control-static">
+								 <ul>
+								  <li ng-repeat="f in ctrl.semestreshow.description"> {{f.nomFormation}} </li>
+								 </ul>
+						</div>
+					</div> -->
+				</form>
+			</div>
+			</div>

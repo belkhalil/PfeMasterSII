@@ -1,0 +1,416 @@
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--loading  -->
+<link rel="icon" type="image/ico" href="img/icon-logo.ico" />
+<link rel="stylesheet" href="css/loading/css/main.css">
+<script src="js/libs/loading/js/vendor/modernizr-2.6.2.min.js"></script>
+<!-- /loading -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>EMPSI ERP</title>
+<!-- Bootstrap Core CSS -->
+<link rel="stylesheet" href="bootstrap-3.3.6-dist/css/bootstrap.min.css">
+<link href="css/template/footer.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link href="css/loading.css" rel="stylesheet">
+<link href="css/thumbnail-gallery.css" rel="stylesheet">
+<Link href="css/landing-page.css" rel="stylesheet">
+<link href="css/styleboxCaption.css" rel="stylesheet" type="text/css"
+	media="screen" />
+<!-- index + chat css -->
+<link href="css/index.css" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css"
+	href="https://fonts.googleapis.com/css?family=Tangerine">
+<style>
+.font1 {
+	font-family: 'Tangerine', serif;
+	font-size: 60px;
+	text-shadow: 4px 4px 4px #aaa;
+}
+</style>
+
+<style type="text/css">
+[ng\:cloak], [ng-cloak], .ng-cloak {
+	display: none !important;
+}
+</style>
+</head>
+<body ng-app="myApp" ng-controller="MainController as MainCtrl"
+	class="demo" ng-cloak class="ng-cloak">
+	<div id="demo-content">
+		<div id="loader-wrapper">
+			<div id="loader"></div>
+			<div class="loader-section section-left"></div>
+			<div class="loader-section section-right"></div>
+		</div>
+		<div id="content">
+		
+			<div id="container">
+				<!-- Navigation -->
+				<div id="header">
+					<div class="navbar navbar-default navbar-fixed-top"
+						role="navigation" id="wrapper">
+						<div class="container">
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle"
+									data-toggle="collapse" data-target=".navbar-collapse">
+									<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+										class="icon-bar"></span>
+								</button>
+								<a href="#/" class="navbar-brand"><img width="60px"
+									height="40px" src="img/logo-empsi.png"
+									style="position: relative; bottom: 10px;"></a>
+							</div>
+							<div class="collapse navbar-collapse">
+								<ul class="nav navbar-nav navbar-right">
+									<li class="dropdown"><a href="#" target="_self"
+										class="dropdown-toggle" data-toggle="dropdown"> <span
+											class="glyphicon glyphicon-user"></span> <strong>{{logedUser.name}}</strong>
+											<span class="glyphicon glyphicon-chevron-down"> </span>
+									</a>
+										<ul class="dropdown-menu">
+											<li>
+												<div class="navbar-login">
+													<div class="row">
+														<div class="col-lg-4">
+															<p class="text-center">
+																<!-- <span class="glyphicon glyphicon-user icon-size">
+                        </span> -->
+																<a href="#userdetail/{{logedUser.idUser}}">
+																	<img class="glyphicon glyphicon-user icon-size"
+																	width="80" height="100"
+																	src="img/archive/{{logedUser.name}}.png">
+																</a>
+															</p>
+														</div>
+														<div class="col-lg-8">
+															<p class="text-left">
+																<strong>{{logedUser.name}}</strong>
+															</p>
+															<p class="text-left small">{{logedUser.name}}</p>
+															<p class="text-left" ng-show="!logedUser">
+																<a href="#login"
+																	class="btn btn-primary btn-block btn-sm">Login</a>
+															</p>
+															<p class="text-left" ng-show="!logedUser">
+																<a href="#inscription"
+																	class="btn btn-primary btn-block btn-sm">nouveau
+																	compte</a>
+															</p>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li ng-show="logedUser" class="divider"></li>
+											<li ng-show="logedUser">
+												<div class="navbar-login navbar-login-session">
+													<div class="row">
+														<div class="col-lg-12">
+															<p>
+																<a href="#" class="btn btn-danger btn-block"
+																	ng-click="MainCtrl.logout()">Deconecter</a>
+															</p>
+														</div>
+													</div>
+												</div>
+											</li>
+										</ul></li>
+								</ul>
+
+							</div>
+						</div>
+					</div>
+					<!--/ Navigation -->
+
+				</div>
+
+				<div id="body">
+					<!-- Page Content -->
+					<div class="container">
+
+						<!-- <div class="col-lg-12 ">
+							<h1 class="page-header"></h1>
+						</div> -->
+
+						<div class="row col-lg-12">
+							<div class="col-lg-3 ">
+								<div class="panel-group" id="accordion">
+
+									<!--  item parent menu  -->
+									<div class="panel panel-default"
+										ng-repeat="(key, data) in logedUser.userMenu track by $index">
+										<div class="panel-heading">
+											<h4 class="panel-title">
+												<a data-toggle="collapse" data-parent="#accordion"
+													href="#collapse{{$index}}" target="_self"><span
+													class="glyphicon glyphicon-folder-close"> </span>{{key}}</a>
+											</h4>
+										</div>
+										<div id="collapse{{$index}}" class="panel-collapse collapse">
+											<!-- the submenu goes here -->
+											<div class="panel-body">
+												<table class="table">
+													<tr ng-repeat="(keyKey, dataData) in data">
+														<td><span
+															class="glyphicon glyphicon-pencil text-primary"></span><a
+															href="{{dataData}}">{{keyKey}}</a></td>
+													</tr>
+												</table>
+											</div>
+											<!-- /submenu-->
+										</div>
+									</div>
+									<!-- /item parent menu-->
+								</div>
+							</div>
+							<div class="col-lg-7  view" ng-view></div>
+							<!-- /option (3)-->
+						
+						<div class="row col-lg-2 chat-box-line"
+							ng-controller="ChatController"
+							ng-show="MainCtrl.allChatBoxsAreHiden()">
+							<!-- chat box beginning  -->
+							<div class="col-sm-3 col-md-3"
+								ng-repeat="box in MainCtrl.chat_boxs track by $index">
+								<div class="popup-box chat-popup" id="+ id +"
+									style="display: block;" ng-show="box.actif">
+									<div class="popup-head">
+										<div class="popup-head-left">{{box.nameReceiver}}</div>
+										<div class="popup-head-right">
+											<a ng-click="MainCtrl.chatBox_hide($index)">&#10005;</a>
+										</div>
+										<div style="clear: both"></div>
+									</div>
+									<div class="popup-messages">
+
+										<!--  {{box}}  -->
+										<div ng-repeat="message in box.messages | orderBy:'time':true"
+											class="message">
+											<div style="background-color: white;">
+												<time>{{box.message.time | date:'HH:mm'}}</time>
+												<!-- from {{box.nameCender}}  to {{box.nameReciver}} -->
+												<p style="font-size: small;">from {{message.nameSender}}
+													to {{message.nameReceiver}}</p>
+
+												<span ng-class="{self: message.self}">{{message.message}}</span>
+
+											</div>
+											<br>
+										</div>
+									</div>
+									<div class="popup-controller">
+										<form ng-submit="addMessage(box)">
+											<input type="text" class="textToSend"
+												ng-model="box.messageToSend">
+										</form>
+									</div>
+								</div>
+							</div>
+							<!-- chat box end  -->
+
+						</div>
+						</div>
+						<!--  -->
+					</div>
+					<!-- Footer -->
+
+				</div>
+
+
+
+			</div>
+			<div class="chat-sidebar" data-ng-show="MainCtrl.chatActif">
+				<div class="sidebar-name"
+					data-ng-repeat="(keyKey, dataData) in MainCtrl.users">
+					<div data-ng-click="MainCtrl.chatBox_popup(keyKey)"
+						style="cursor: pointer;">
+						<img width="30" height="30" src="img/archive/{{dataData}}.png" />
+						<span>{{dataData}}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Footer -->
+	<!-- <div id="footer">
+					<section class="footer">
+						<div class="container">
+							<div class="row">
+								<div class="col-lg-4  col-md-4 col-sm-4">
+									<div class="footer_dv">
+										<h4>Maroc</h4>
+										<ul>
+											<li class="line_rv"><a href="canon-printer-support.php">Tél:
+													05.29.02.40.42 33,rue de sebta quartier des hôpitaux
+													casablanca.</a></li>
+
+										</ul>
+									</div>
+								</div>
+								<div class="col-lg-4  col-md-4 col-sm-4">
+									<div class="footer_dv">
+										<h4>France</h4>
+										<ul>
+											<li><a href="tosiba-printer-support.php">Tél :
+													00336.98.84.42.44 107 rue de Tolbiac Paris</a></li>
+											<li><a href="panasonic-printer-support.php">Panasonic Printer Support</a></li>
+
+										</ul>
+									</div>
+								</div>
+								<div class="col-lg-4  col-md-4 col-sm-4">
+									<div class="footer_dv">
+										<h4>Contact us</h4>
+										<p>Copyright &copy; www.empsi-sup.com</p>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+				</div> -->
+	<!-- loading  -->
+	<script
+		src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script>
+		window.jQuery
+				|| document
+						.write('<script src="js/libs/loading/js/vendor/jquery-1.9.1.min.js"><\/script>')
+	</script>
+	<script type="text/javascript">
+		/* $(function () {
+			  $('[data-toggle="tooltip"]').tooltip()
+			}) */
+		$(document).ready(function() {
+			$('[data-toggle="tooltip"]').tooltip();
+		});
+	</script>
+	<script src="js/libs/loading/js/main.js"></script>
+
+	<!-- libs -->
+
+	<script
+		src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
+
+
+
+
+	<script src="js/libs/angular.min.js"></script>
+	<script src="js/libs/angular-route.js"></script>
+	<script src="js/libs/jquery-2.2.1.js"></script>
+	<script src="js/libs/bootstrap.min.js"></script>
+	<script src="js/libs/jcs-auto-validate.min.js"></script>
+	<script src="js/libs/loading.js"></script>
+
+	<!-- For socket -->
+	<script src="js/libs/sockjs/sockjs-0.3.4.js" type="text/javascript"></script>
+	<script src="js/libs/stomp-websocket/lib/stomp.js"
+		type="text/javascript"></script>
+	<script src="js/libs/lodash/dist/lodash.js"></script>
+	<!-- end of libs   -->
+
+
+	<script src="app.js"></script>
+	<script src="js/services/main_model_service.js"></script>
+	<script src="js/controllers/main_controller.js"></script>
+
+	<!-- Socket -->
+	<script src="js/controllers/socket/chat_service.js"
+		type="text/javascript"></script>
+	<script src="js/controllers/socket/chat_controller.js"
+		type="text/javascript"></script>
+
+	<!--Group and rights  -->
+	<script src="js/controllers/rights/groups_controller.js"></script>
+	<script src="js/controllers/rights/login_controller.js"></script>
+	<script src="js/controllers/rights/rights_controller.js"></script>
+	<script src="js/controllers/rights/users_controller.js"></script>
+	<script src="js/controllers/rights/login_controller.js"></script>
+	<script src="js/controllers/rights/landing_controller.js"></script>
+	<script src="js/controllers/rights/user_detail_controller.js"></script>
+
+	<!-- Login -->
+	<script src="js/controllers/rights/login_controller.js"></script>
+
+	<!-- Messages -->
+	<script src="js/controllers/messages/message_envoyes.js"></script>
+	<script src="js/controllers/messages/message_controller.js"></script>
+	<script src="js/controllers/messages/declaration_controller.js"></script>
+	<script src="js/controllers/messages/declaration_detail_controller.js"></script>
+	<script src="js/controllers/messages/message_detail_controller.js"></script>
+
+	<!-- Formation -->
+
+	<script src="js/services/formation/EnsPService.js"></script>
+	<script src="js/services/formation/EnsVService.js"></script>
+	<script src="js/services/formation/EtudiantService.js"></script>
+	<script src="js/services/formation/FormationContinueService.js"></script>
+	<script src="js/services/formation/TypeFormationService.js"></script>
+	<script src="js/services/formation/FormationDServices.js"></script>
+	<script src="js/services/formation/MatiereService.js"></script>
+	<script src="js/services/formation/ModuleService.js"></script>
+	<script src="js/services/formation/SemestreService.js"></script>
+	<script src="js/services/formation/NiveauService.js"></script>
+	<script src="js/services/formation/SeanceService.js"></script>
+
+
+	<script src="js/controllers/formation/EnsPController.js"></script>
+	<script src="js/controllers/formation/EnsVController.js"></script>
+	<script src="js/controllers/formation/EtudiantController.js"></script>
+	<script src="js/controllers/formation/FormationContinueController.js"></script>
+	<script src="js/controllers/formation/FormationDiplomanteController.js"></script>
+	<script src="js/controllers/formation/TypeFormationController.js"></script>
+	<script src="js/controllers/formation/MatiereController.js"></script>
+	<script src="js/controllers/formation/ModuleController.js"></script>
+	<script src="js/controllers/formation/SemestreController.js"></script>
+	<script src="js/controllers/formation/NiveauController.js"></script>
+	<script
+		src="js/controllers/formation/affectationMatieresEnsPController.js"></script>
+	<script src="js/controllers/formation/SeanceController.js"></script>
+
+	<!--patrimoine  -->
+	<script src="js/services/patrimoine/SalleService.js"></script>
+	<script src="js/services/patrimoine/MaterielService.js"></script>
+	<script src="js/services/patrimoine/ReservationSalleService.js"></script>
+	<script src="js/services/patrimoine/ReservationMaterielService.js"></script>
+
+	<script src="js/controllers/patrimoine/SalleController.js"></script>
+	<script src="js/controllers/patrimoine/MaterielController.js"></script>
+	<script src="js/controllers/patrimoine/ReservationSalleController.js"></script>
+	<script
+		src="js/controllers/patrimoine/ReservationMaterielController.js"></script>
+
+
+	<!-- inscription -->
+	<script src="js/controllers/inscription/inscription_controller.js"></script>
+	<script src="js/controllers/inscription/gestion_inscription.js"></script>
+
+	<!-- chat -->
+	<script src="js/controllers/messages/email_suggestion_controlller.js"></script>
+
+	<!--  -->
+	<script src="js/controllers/classe/classe_controller.js"></script>
+	<script src="js/controllers/classe/maClasseController.js"></script>
+	<script src="js/controllers/classe/messageClasseController.js"></script>
+	<script src="js/controllers/classe/fichierClasseController.js"></script>
+	<script src="js/controllers/classe/fichierClasseController.js"></script>
+	<script src="js/controllers/classe/messageClasseDetail_controller.js"></script>
+	<script src="js/controllers/motdepass/motPasseController.js"></script>
+
+	<!-- inscription Formation-->
+	<script
+		src="js/controllers/inscriptionFormation/inscriptionForm_controller.js"></script>
+
+	<!-- <script src=></script> -->
+</body>
+
+</html>

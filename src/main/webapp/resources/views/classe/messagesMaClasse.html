@@ -1,0 +1,40 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+	.my-group .form-control{
+	    width:50%;
+	}
+</style>
+	<div ng-controller="MessageClasseController as ctrl" >
+			<!-- begin of the panel-->
+			
+			<div class="col-md-12 " ng-if="ctrl.messages">
+			
+		<div class="panel panel-info spacer">
+		<div class="panel-heading"><h1>Messages  de Classe</h1></div>
+				      	<table class="table"><!-- the table of users  -->
+						<thead>
+							<tr>
+								<th>id</th>
+								<th>Sujet</th>
+								<th>sender</th>
+								<th>Date Envoi</th>
+							</tr>
+						</thead>	
+						<tbody>
+							<tr ng-repeat="u in ctrl.messages">
+								<td>{{u.id}}</td>
+								<td><a href="#/detailMess/{{u.id}}">{{u.objet}}</a></td>
+								<td>{{u.user.firstName}} {{u.user.lastName}} </td>
+								<td>{{u.dateEnvoi  | date:'MM/dd/yyyy'}}</td>								
+								
+							</tr>
+						</tbody>
+					</table><!-- end of the table of users  -->
+					
+			      </div>
+			    
+			
+			</div>  <!-- end of the panel-->
+			
+		<!-- the end of the controller div  -->
+	</div>
